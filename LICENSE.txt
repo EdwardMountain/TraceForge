@@ -1,0 +1,100 @@
+TRACEFORGE SOFTWARE LICENSE
+Proprietary Freeware / Donationware License
+
+Copyright (c) 2026 Edoardo Montagnoli.
+All rights reserved.
+
+This software, including but not limited to its source code, compiled or minified files,
+HTML, CSS, JavaScript, graphics, user interface, documentation, names, branding, and any
+related assets, is the exclusive property of Edoardo Montagnoli, unless otherwise stated.
+
+1. Permission to Use
+
+Permission is granted to access and use this software free of charge for personal,
+evaluation, testing, demonstration, and non-commercial use only.
+
+This software is distributed as freeware/donationware. A donation is optional and does not
+grant ownership of the software, source code, intellectual property, branding, or any
+additional rights beyond the permission to use the software under this license.
+
+Donation link:
+https://paypal.me/edoardomontagnoli
+
+2. Access and Use Only
+
+This software is licensed for access and use only through the official version provided by
+the copyright holder.
+
+You are not granted permission to download, save, copy, mirror, host, redistribute,
+publish, modify, deobfuscate, reverse engineer, extract, reuse, or republish the software,
+except for temporary technical copies automatically created by the browser as strictly
+necessary to access and run the software.
+
+Any offline copy, local copy, mirror, reposted version, modified version, extracted source
+code, derived source code, or redistributed copy is prohibited without prior written
+permission from the copyright holder.
+
+3. Restrictions
+
+Without prior written permission from the copyright holder, you may not:
+
+- copy, redistribute, sell, rent, sublicense, publish, upload, host, mirror, or otherwise
+  make this software or any modified version of it available to third parties;
+- modify, adapt, translate, reverse engineer, deobfuscate, decompile, disassemble, inspect
+  for the purpose of cloning, or attempt to derive the original source code or internal
+  structure of the software;
+- remove, alter, hide, or obscure any copyright notice, license notice, donation notice,
+  author attribution, branding, or proprietary marking;
+- use the software, in whole or in part, as the basis for another product, public project,
+  commercial service, derivative work, or competing tool;
+- claim ownership, authorship, or affiliation with this software or its author.
+
+4. Feedback and Testing
+
+Users who receive this software for testing or feedback may report issues, suggestions,
+and comments to the author. Providing feedback does not grant the user any ownership,
+license, or claim over the software or future versions of it.
+
+5. Acceptance of Terms
+
+By accessing, opening, running, or using this software, you acknowledge that you have read,
+understood, and accepted the terms of this license.
+
+If you do not agree with these terms, you must not use the software and must delete any
+copy in your possession or control.
+
+6. No Warranty
+
+This software is provided "as is", without warranty of any kind, express or implied,
+including but not limited to warranties of merchantability, fitness for a particular
+purpose, non-infringement, availability, accuracy, or reliability.
+
+The author is not responsible for any damage, data loss, malfunction, interruption,
+security issue, financial loss, or any other consequence arising from the use or inability
+to use this software.
+
+7. Limitation of Liability
+
+To the maximum extent permitted by applicable law, the author shall not be liable for any
+direct, indirect, incidental, special, consequential, exemplary, or punitive damages arising
+from the use, distribution, modification, or inability to use this software.
+
+8. Termination
+
+Any violation of this license automatically terminates the permission to use the software.
+Upon termination, you must immediately stop using the software and delete all copies in
+your possession or control.
+
+9. Permissions
+
+Any request for redistribution, modification, commercial use, inclusion in another project,
+or any use not expressly permitted by this license must be requested in writing from the
+copyright holder.
+
+10. Entire Agreement
+
+This license represents the entire agreement between the user and the copyright holder
+regarding the use of this software. If any part of this license is found to be invalid or
+unenforceable, the remaining parts shall remain in effect.
+
+End of license.
