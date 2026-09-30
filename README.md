@@ -1,14 +1,14 @@
 # TraceForge — Mic Calibration Compensator
 
-**Current version:** V2.0.03  
+**Current version:** V3.02  
 **Author:** DoDo7  
 **Copyright:** © 2026 Edoardo Montagnoli. All rights reserved.
 
-TraceForge is a browser-based magnitude compensation tool for transfer function measurements through RF systems or other non-transparent measurement paths.
+A magnitude compensation tool for transfer function measurements through RF systems or other non-transparent measurement paths.
 
-It is designed to help measurement engineers compensate the magnitude response of a wireless/RF measurement path, so measurements made through a cable and measurements made through an RF system can line up more accurately.
+It helps measurement engineers compensate the magnitude response of a wireless/RF measurement path, so measurements made through a cable and measurements made through an RF system line up more accurately.
 
-The main intended workflow is:
+The main workflow is:
 
 ```text
 Microphone calibration curve
@@ -40,7 +40,7 @@ The goal is to make cabled and wireless measurement paths behave more similarly 
 
 ## Important Note About Smaart
 
-TraceForge V2.0.03 includes a default export mode:
+TraceForge includes a default export mode:
 
 ```text
 Mic Correction Mode — Smaart Compatible
@@ -56,7 +56,7 @@ For software that expects a directly applied EQ-style correction curve, TraceFor
 EQ Mode — Inverted Compensation
 ```
 
-EQ Mode is hidden under the advanced export mode section and requires confirmation before use.
+EQ Mode is hidden under the advanced export mode option and requires confirmation before use.
 
 TraceForge is not affiliated with, endorsed by, or sponsored by Rational Acoustics or Smaart.
 
@@ -64,8 +64,7 @@ TraceForge is not affiliated with, endorsed by, or sponsored by Rational Acousti
 
 ## Features
 
-- Runs fully in the browser
-- No installation required
+- Runs fully in the browser, no installation required
 - Local file parsing: files are not uploaded by this page
 - Supports microphone calibration files in `.txt`, `.crv`, `.csv`, `.tsv`, and ASCII-like text formats
 - Supports RF/path response files exported as ASCII `.txt`
@@ -76,9 +75,13 @@ TraceForge is not affiliated with, endorsed by, or sponsored by Rational Acousti
 - Optional normalization at 1 kHz
 - Built-in flat 0 dB calibration curve
 - Built-in demo RF/path response generator
+- Live compensation: the output curve is calculated as soon as both curves are loaded and follows every change
+- Magnitude graph with cursor readout of all three curves
+- Status box with the largest deviation of the output curve from 0 dB
 - Smaart-compatible mic correction mode
 - Advanced EQ-style inverted compensation mode
 - Export to `.txt`
+- Dark mode and Daylight mode
 - Responsive layout for desktop, tablet, and mobile
 - Donationware support button
 
@@ -88,51 +91,51 @@ TraceForge is not affiliated with, endorsed by, or sponsored by Rational Acousti
 
 ### 1. Accept the License
 
-When opening TraceForge, a license popup is shown.
+When opening a new version of TraceForge for the first time, a license popup is shown.
 
-Read the license, check the acceptance box, and press:
+Read the license and press:
 
 ```text
-Accept and Continue
+Accept
 ```
 
-The app cannot be used unless the license is accepted.
+The app cannot be used unless the license is accepted. The license is asked again once for every new version. It can be read again at any time from Help → License.
 
 ---
 
 ### 2. Load a Mic / Flat Calibration Curve
 
-In the first section:
+At the top of the page, in the box:
 
 ```text
-Mic / Flat Calibration Curve
+Mic calibration
 ```
 
 You can either:
 
-- drag and drop a microphone calibration file;
-- click the loading area and choose a file;
-- or enable:
+- drag and drop a microphone calibration file onto the box;
+- press `Load` and choose a file;
+- or press:
 
 ```text
-Use flat 0 dB calibration curve
+Flat 0 dB
 ```
 
-The flat calibration option generates an internal 0 dB curve from 10 Hz to 20 kHz.
+Flat 0 dB generates an internal 0 dB curve from 10 Hz to 20 kHz.
 
-If a real calibration file is loaded, the flat calibration mode is automatically disabled.
+If a real calibration file is loaded, Flat 0 dB is automatically switched off.
 
 ---
 
 ### 3. Load an RF / Path Response
 
-In the second section:
+In the box:
 
 ```text
-RF / Path Response
+RF / path response
 ```
 
-Load an ASCII transfer function export of the measurement path you want to compensate.
+Load an ASCII transfer function export of the measurement path you want to compensate, by drag and drop or with `Load`.
 
 Typical example:
 
@@ -142,29 +145,52 @@ Wireless system measured against a cable/reference path
 
 Only magnitude data is used. Phase and coherence columns are ignored.
 
-Alternatively, you can enable:
+Alternatively, press:
 
 ```text
-Demo RF / path response
+Demo
 ```
 
-This generates a smooth random demo curve from 10 Hz to 20 kHz with approximately ±6 dB variation.
+This generates a smooth random demo curve from 10 Hz to 20 kHz with approximately ±6 dB variation. Press `↻` to generate a new demo curve.
 
 The demo mode is useful for testing the app without real files.
 
-If a real RF/path response file is loaded, demo mode is automatically disabled.
+If a real RF/path response file is loaded, demo mode is automatically switched off.
+
+The sign between the two boxes shows the operation in use: `+` in Mic Correction Mode, `−` in EQ Mode.
 
 ---
 
-### 4. Set Names
+### 4. Check the Compensation Curve
 
-TraceForge lets you define:
+As soon as both curves are loaded, TraceForge:
+
+- normalizes the curves if enabled;
+- interpolates the RF/path response over the calibration frequencies;
+- calculates the compensated output curve;
+- shows it on the graph;
+- fills the Output data table;
+- prepares the `.txt` export.
+
+There is no Generate button. Loading a new curve or changing any option updates the output right away.
+
+On the graph, the mic calibration is drawn in blue, the RF/path response in orange, and the compensated output as a dashed violet line. When the output coincides with the RF/path response (for example with a flat calibration curve), the orange line stays visible inside the dashes.
+
+The status box shows the largest deviation of the output curve from 0 dB, the number of points of each curve, and the operation in use.
+
+The Output data table and the Parser log are collapsible panels below the graph, closed by default.
+
+---
+
+### 5. Set Names
+
+In the Names section, TraceForge lets you define:
 
 - mic / calibration name;
 - RF / path name;
 - custom name.
 
-The generated output title and filename are automatically built from these fields.
+The curve title and the file name are built automatically from these fields.
 
 Example:
 
@@ -174,39 +200,18 @@ Isemcon EMX-7150 + Gaodimic RF System compensated - Test 01.txt
 
 ---
 
-### 5. Choose Normalization
+### 6. Choose Normalization
 
 By default, TraceForge normalizes both curves at 1 kHz:
 
 ```text
-Normalize microphone calibration at 1 kHz
+Normalize mic calibration at 1 kHz
 Normalize RF / path response at 1 kHz
 ```
 
 This removes global level offsets and keeps the compensation focused on the shape of the magnitude response.
 
-Both options can be disabled.
-
----
-
-### 6. Generate the Compensation Curve
-
-Press:
-
-```text
-Generate Compensation Curve
-```
-
-TraceForge will:
-
-- parse the calibration file;
-- parse the RF/path response;
-- normalize curves if enabled;
-- interpolate the RF/path response over the calibration frequencies;
-- generate the compensated output curve;
-- show a graph preview;
-- show a table preview;
-- prepare the `.txt` export.
+Both options can be disabled. When normalization is on, a `Ref 1 kHz` marker is shown on the graph.
 
 ---
 
@@ -242,7 +247,7 @@ This is the default and recommended mode for the intended TraceForge workflow.
 
 ### EQ Mode — Inverted Compensation
 
-Advanced mode.
+Advanced mode. Enable `Show advanced export mode` to see it.
 
 Formula:
 
@@ -251,6 +256,8 @@ Output = Mic Calibration - RF / Path Response
 ```
 
 Use this only when the target software expects a directly applied EQ-style inverted correction curve.
+
+TraceForge asks for confirmation before switching to EQ Mode. Hiding the advanced export mode switches back to Mic Correction Mode.
 
 Do not use EQ Mode for Smaart microphone correction curves unless you are absolutely sure that is what you need.
 
@@ -288,13 +295,21 @@ The parser attempts to ignore:
 
 For RF/path response files, only magnitude is used. Phase and coherence data are ignored in the current version.
 
+If a file cannot be read, a message appears at the bottom of the page. The Parser log shows what was read from each file and one summary line for each update of the output.
+
+---
+
+## Settings Kept Between Sessions
+
+Every time TraceForge opens, curves, names and options start from their defaults. Only the colour mode (Dark or Daylight) is remembered.
+
 ---
 
 ## Current Limitations
 
 - Magnitude-only compensation
 - No phase compensation
-- `.trf` files are not supported in V2.0.03
+- `.trf` files are not supported yet
 - RF/path response input should be ASCII/text-based
 - Output is `.txt`
 - Smaart behavior is based on practical testing and expected microphone correction behavior
@@ -350,6 +365,29 @@ The author is not responsible for any damage, data loss, malfunction, interrupti
 
 ## Version History
 
+### V3.02
+
+- The compensation curve is calculated automatically as soon as both curves are loaded and follows every change
+- Removed the Generate button; Download .txt is now the main action
+- Parser log: one summary line for each update of the output
+
+### V3.01
+
+- Compensated output drawn as a dashed line, so it no longer hides the RF/path response when the two coincide
+- New anvil logo
+- Header on two rows, with the full product description next to the name
+
+### V3.00
+
+- New interface, shared with the other DoDo7 tools: Dark mode and Daylight mode, Barlow typeface, one-screen layout on desktop
+- Mic calibration and RF/path response boxes at the top, with drag and drop, Flat 0 dB and Demo buttons
+- Magnitude graph with cursor readout and 1 kHz reference marker
+- Status box with the largest output deviation from 0 dB
+- Output data table and Parser log as collapsible panels
+- EQ Mode confirmation in an in-app window
+- License accepted once per version; Help panel with the user guide
+- Export format and calculation unchanged from V2.0.03
+
 ### V2.0.03
 
 - Removed `public` from exported `.txt` filenames
@@ -369,4 +407,3 @@ The author is not responsible for any damage, data loss, malfunction, interrupti
 **DoDo7**  
 Copyright © 2026 Edoardo Montagnoli.  
 All rights reserved.
-
